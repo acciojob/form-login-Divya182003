@@ -1,67 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
   <title>Form Login</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 50px;
-    }
+  <script>
+    function getFormvalue(event) {
+      // Prevent the form from submitting and refreshing the page
+      event.preventDefault();
 
-    label, input {
-      display: block;
-      margin-bottom: 10px;
-    }
+      // Retrieve input values
+      const firstName = document.forms["myForm"]["fname"].value;
+      const lastName = document.forms["myForm"]["lname"].value;
 
-    input {
-      padding: 5px;
-      width: 200px;
+      // Display full name
+      alert(firstName + " " + lastName);
     }
-
-    button {
-      padding: 7px 15px;
-      font-size: 16px;
-      background-color: #28a745;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #218838;
-    }
-  </style>
+  </script>
 </head>
 <body>
 
-  <form id="loginForm" onsubmit="getFormvalue(event)">
-    <label for="fname">First Name:</label>
-    <input type="text" name="fname" id="fname" />
-
-    <label for="lname">Last Name:</label>
-    <input type="text" name="lname" id="lname" />
-
-    <button type="submit">Submit</button>
+  <form name="myForm" onsubmit="getFormvalue(event)">
+    First Name: <input type="text" name="fname"><br><br>
+    Last Name: <input type="text" name="lname"><br><br>
+    <input type="submit" value="Submit">
   </form>
-
-  <script>
-    function getFormvalue(event) {
-      event.preventDefault(); // Prevent form from refreshing the page
-
-      const firstName = document.forms["loginForm"]["fname"].value.trim();
-      const lastName = document.forms["loginForm"]["lname"].value.trim();
-
-      const fullName = `${firstName} ${lastName}`.trim();
-
-      if (!firstName && !lastName) {
-        alert("Please enter your first and/or last name.");
-      } else {
-        alert(fullName);
-      }
-    }
-  </script>
 
 </body>
 </html>
